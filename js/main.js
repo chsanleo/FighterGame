@@ -1,13 +1,13 @@
 const TOTALFIGHTERS = 9;
-const NUMTEAMFIGHTERS = 3;
+const MAXNUMTEAMFIGHTERS = 3;
 
 let allFighters = [];
 let allNameFighters = ['Ihesan','Awip','Olusixa','Lixet','Amixer','Oxot','Jaracas','Tohut','Orem'];
 
 let partida = {
 
-    player1: [],
-    player2: [],
+    teamPlayer1: [],
+    teamPlayer2: [],
 
 };
 
@@ -17,3 +17,15 @@ for(let name of allNameFighters){
 
 
 console.log(allFighters);
+
+
+
+
+
+
+
+
+///acciones del juego game.js
+//select
+
+//fight
