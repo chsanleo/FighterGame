@@ -6,7 +6,9 @@ class fighter{
         this.ataque = ataque;
         this.defensa = defensa;
         this.suerte = suerte;
-        this.vida = utils.random(100,150);
+        this.vida = utils.random(100,200);
+
+        if(this.vida < 150){ this.ataque += utils.random(10,30); }
     }
 
     //funciones
@@ -16,9 +18,8 @@ class fighter{
     }
 
     isAlive(){
-        if(this.vida < 1){return false;}
+        if( this.vida < 1){ return false; }
         return true;
     }
 
-    
 }
