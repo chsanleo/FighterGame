@@ -15,20 +15,20 @@ ul{
 li > p{
     color:red;
 }
+body{
+    font-family: "FightClub";
+    color:white;
+}
+
 
 .introText{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-family: "FightClub";
     font-size: xx-large;
 }
 
-.textRule
-{
-    color:white;
-}
 .rule{
     color:black;
 }
@@ -51,5 +51,7 @@ li > p{
     border: solid 1px black;
     height: 13em;
 }
-
+.disable{
+    filter:grayscale(100%);
+}
 
