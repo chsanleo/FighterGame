@@ -9,25 +9,30 @@
 
 }
 
+ul{
+    list-style:none;
+}
+li > p{
+    color:red;
+}
 
-#intro{
+.introText{
     display: flex;
     flex-direction: row;
-    text-align: center;
     justify-content: center;
     align-items: center;
     font-family: "FightClub";
     font-size: xx-large;
 }
 
-#introRule
+.textRule
 {
     color:white;
 }
-#rule{
+.rule{
     color:black;
 }
-#rule:hover{
+.rule:hover{
     color:red;
 }
 
