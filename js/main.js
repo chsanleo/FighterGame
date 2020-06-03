@@ -11,10 +11,23 @@ let partida = {
 
 };
 
+let luchadores = document.getElementById("luchadoress");
+let i = 1;
 for(let name of allNameFighters){
-  allFighters.push(new fighter(name,utils.random(20, 30), utils.random(20, 30), 20))
-}
+  
+  fighterT = new fighter(name,utils.random(20, 30), utils.random(20, 30), 20)
 
+  let luchador = document.createElement("img");
+
+  luchador.setAttribute("src",`img/human${i}.jpg`);
+  luchador.setAttribute("class","luchador");
+  luchador.setAttribute("title", ` Name: ${fighterT.nombre} Attack: ${fighterT.ataque} Defense: ${fighterT.defensa} Lucky: ${fighterT.suerte}`);
+  luchador.setAttribute('value',i);
+  luchador.setAttribute('onlick',"");
+  luchadores.appendChild(luchador)
+  allFighters.push(fighterT);
+  i++;
+};
 
 console.log(allFighters);
 
