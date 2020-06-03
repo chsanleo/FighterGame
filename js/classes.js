@@ -21,5 +21,4 @@ class fighter{
         if( this.vida < 1){ return false; }
         return true;
     }
-
 }
