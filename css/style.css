@@ -1,4 +1,50 @@
+@font-face {
+    font-family: "FightClub";
+    src: url("../font/FIGHTT3_.ttf");
+}
+
+.screen{
+    background-color: black;
+    width: 100%;
+
+}
+
+
+#intro{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: "FightClub";
+    font-size: xx-large;
+}
+
+#introRule
+{
+    color:white;
+}
+#rule{
+    color:black;
+}
+#rule:hover{
+    color:red;
+}
+
+
+
+
+.luchadores{
+    display:Flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 .luchador{
+    padding: 1em;
     border: solid 1px black;
     height: 13em;
 }
+
+
