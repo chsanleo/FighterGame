@@ -11,7 +11,7 @@ let partida = {
 
 };
 
-let luchadores = document.getElementById("luchadoress");
+let luchadores = document.getElementById("fighters");
 let i = 1;
 for(let name of allNameFighters){
   
@@ -22,12 +22,37 @@ for(let name of allNameFighters){
   luchador.setAttribute("src",`img/human${i}.jpg`);
   luchador.setAttribute("class","luchador");
   luchador.setAttribute("title", ` Name: ${fighterT.nombre} Attack: ${fighterT.ataque} Defense: ${fighterT.defensa} Lucky: ${fighterT.suerte}`);
-  luchador.setAttribute('value',i);
-  luchador.setAttribute('onlick',"");
+  luchador.setAttribute('value', i);
+  //luchador.setAttribute('onclick','game.choose(this.value)');
+  luchador.setAttribute('onclick','prueba()');
+
   luchadores.appendChild(luchador)
   allFighters.push(fighterT);
   i++;
 };
+
+
+const prueba =()=>{console.log("dentro moreno");}
+/*
+const updateTeams = () =>{
+
+  let player1 = document.getElementById('chossedPlayer1');
+  player1.innerHTML ='';
+
+  for(let person of teamPlayer1)
+  {
+    let luchador = document.createElement('img');
+    luchador.setAttribute("src",`img/human${i}.jpg`);
+    luchador.setAttribute("class","luchador");
+    luchador.setAttribute("title", ` Name: ${person.nombre} Attack: ${person.ataque} Defense: ${person.defensa} Lucky: ${person.suerte}`);
+    
+    player1.appendChild(luchador);
+  };
+
+  let player2 = document.getElementById('chossedPlayer2');
+  player1.innerHTML ='';
+
+}*/
 
 console.log(allFighters);
 
