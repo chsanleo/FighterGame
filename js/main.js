@@ -1,4 +1,3 @@
-const TOTALFIGHTERS = 9;
 const MAXNUMTEAMFIGHTERS = 3;
 const EMPTY = 0;
 
@@ -30,7 +29,3 @@ for(let name of allNameFighters){
   allFighters.push(fighterT);
   i++;
 };
-
-
-console.log(allFighters);
-console.log(partida.teamPlayer1);
