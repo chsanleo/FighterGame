@@ -1,5 +1,6 @@
 const TOTALFIGHTERS = 9;
 const MAXNUMTEAMFIGHTERS = 3;
+const EMPTY = 0;
 
 let allFighters = [];
 let allNameFighters = ['Ihesan','Awip','Olusixa','Lixet','Amixer','Oxot','Jaracas','Tohut','Orem'];
@@ -19,12 +20,11 @@ for(let name of allNameFighters){
 
   let luchador = document.createElement("img");
 
-  luchador.setAttribute("src",`img/human${i}.jpg`);
-  luchador.setAttribute("class","luchador");
-  luchador.setAttribute("title", ` Name: ${fighterT.nombre} Attack: ${fighterT.ataque} Defense: ${fighterT.defensa} Lucky: ${fighterT.suerte}`);
-  luchador.setAttribute('value', i);
-  //luchador.setAttribute('onclick','game.choose(this.value)');
-  luchador.setAttribute('onclick','prueba()');
+  luchador.setAttribute('src',`img/human${i}.jpg`);
+  luchador.setAttribute('class','luchador');
+  luchador.setAttribute('title', ` Name: ${fighterT.nombre} Attack: ${fighterT.ataque} Defense: ${fighterT.defensa} Lucky: ${fighterT.suerte}`);
+  luchador.setAttribute('id', `fighter${i}`);
+  luchador.setAttribute('onclick',`game.choose(${i})`);
 
   luchadores.appendChild(luchador)
   allFighters.push(fighterT);
@@ -32,38 +32,5 @@ for(let name of allNameFighters){
 };
 
 
-const prueba =()=>{console.log("dentro moreno");}
-/*
-const updateTeams = () =>{
-
-  let player1 = document.getElementById('chossedPlayer1');
-  player1.innerHTML ='';
-
-  for(let person of teamPlayer1)
-  {
-    let luchador = document.createElement('img');
-    luchador.setAttribute("src",`img/human${i}.jpg`);
-    luchador.setAttribute("class","luchador");
-    luchador.setAttribute("title", ` Name: ${person.nombre} Attack: ${person.ataque} Defense: ${person.defensa} Lucky: ${person.suerte}`);
-    
-    player1.appendChild(luchador);
-  };
-
-  let player2 = document.getElementById('chossedPlayer2');
-  player1.innerHTML ='';
-
-}*/
-
 console.log(allFighters);
-
-
-
-
-
-
-
-
-///acciones del juego game.js
-//select
-
-//fight
+console.log(partida.teamPlayer1);
