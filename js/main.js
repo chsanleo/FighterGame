@@ -16,13 +16,13 @@ let luchadores = document.getElementById("fighters");
 let i = 1;
 for(let name of allNameFighters){
   
-  fighterT = new fighter(name,utils.random(20, 30), utils.random(20, 30), 20)
+  fighterT = new fighter(name,utils.random(20, 30), utils.random(10, 20), utils.random(5, 10));
 
   let luchador = document.createElement("img");
 
   luchador.setAttribute('src',`img/human${i}.jpg`);
   luchador.setAttribute('class','luchador');
-  luchador.setAttribute('title', ` Name: ${fighterT.nombre} Attack: ${fighterT.ataque} Defense: ${fighterT.defensa} Lucky: ${fighterT.suerte}`);
+  luchador.setAttribute('title', ` Name:${fighterT.nombre} Attack:${fighterT.ataque} Defense:${fighterT.defensa} Lucky:${fighterT.suerte} Life:${fighterT.vida}`);
   luchador.setAttribute('id', `fighter${i}`);
   luchador.setAttribute('onclick',`game.choose(${i})`);
 

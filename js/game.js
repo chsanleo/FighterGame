@@ -1,31 +1,31 @@
 let game = {
 
     choose(fighterID) {
-        if (partida.teamPlayer2.length == MAXNUMTEAMFIGHTERS){return;}
+        if (partida.teamPlayer2.length == MAXNUMTEAMFIGHTERS) { return; }
         let fighterChoosedPosition = Number(fighterID) - 1;
         let currentTeam = 2;
 
         if (partida.teamPlayer1.length == EMPTY || partida.teamPlayer2.length == partida.teamPlayer1.length) {
             partida.teamPlayer1.push(allFighters[fighterChoosedPosition]);
-            
-            currentTeam = 1;
-            game.changeTextPlayer(currentTeam,2);
 
-        }else{
+            currentTeam = 1;
+            game.changeTextPlayer(currentTeam, 2);
+
+        } else {
             partida.teamPlayer2.push(allFighters[fighterChoosedPosition]);
-            game.changeTextPlayer(currentTeam,1);
+            game.changeTextPlayer(currentTeam, 1);
         }
-              
-        game.disableFighter(fighterID);
-        game.updateTeam(currentTeam);
-            
-        if (partida.teamPlayer2.length == MAXNUMTEAMFIGHTERS) { nextStage(); }
+
+        this.disableFighter(fighterID);
+        this.updateTeam(currentTeam);
+
+        if (partida.teamPlayer2.length == MAXNUMTEAMFIGHTERS) { this.nextStage(); }
     },
 
     disableFighter(fighterID) {
         let fighter = document.getElementById(`fighter${fighterID}`);
         fighter.setAttribute(`onclick`, ``);
-        
+
         let classFighter = fighter.getAttribute('class');
         classFighter += ' disable';
         fighter.setAttribute('class', classFighter);
@@ -50,48 +50,44 @@ let game = {
 
     changeTextPlayer(oldNumber, newNumber) {
         let playerChooseText = document.getElementById('chooseText');
-        playerChooseText.innerHTML = playerChooseText.outerHTML.replace(oldNumber,newNumber);
+        playerChooseText.innerHTML = playerChooseText.outerHTML.replace(oldNumber, newNumber);
     },
 
     nextStage() {
 
-
     },
-    fight(){
+    calculateFight(offensiveTeam, defensiveTeam, defensive) {
 
-        if(partida.teamPlayer1.length == 0 || partida.teamPlayer2.length == 0){return;}
+        defensiveTeam[0].setHit(offensiveTeam[0].getAttack());
+        let life = parseInt(defensiveTeam[0].vida);
+        if (life < 1) { life = "STOP!"; }
+        document.getElementById(`lifeP${defensive}`).innerHTML = life;
 
-        partida.teamPlayer1[0].setHit(partida.teamPlayer2[0].getAttack());
-        document.getElementById("lifeP1").innerHTML= partida.teamPlayer1[0].vida;
-console.log(`P1: ${partida.teamPlayer1[0].vida}`);
-        partida.teamPlayer2[0].setHit(partida.teamPlayer1[0].getAttack());
-        document.getElementById("lifeP2").innerHTML= partida.teamPlayer2[0].vida;
-console.log(`P2: ${partida.teamPlayer2[0].vida}`);
-
-
-
-        if(!partida.teamPlayer1[0].isAlive()){  
-console.log(`Eliminamos al primer jugador P1 ${partida.teamPlayer1[0].nombre}`);
-            partida.teamPlayer1.shift();
+        if (!defensiveTeam[0].isAlive()) {
+            defensiveTeam.shift();
+            this.updateTeam(defensive);
         }
-        if(!partida.teamPlayer2[0].isAlive()){
-console.log(`Eliminamos al primer jugador P2 ${partida.teamPlayer2[0].nombre}`);
-            partida.teamPlayer2.shift();
+    },
+
+    isFinish(teamList, team) {
+        if (teamList.length == 0) {
+            document.getElementById("mssgPlayerWin").innerHTML = `PLAYER ${team} WIN`;
         }
-        
-        if(partida.teamPlayer1.length == 0 && partida.teamPlayer2.length == 0){
-            document.getElementById("mssgPlayerWin").innerHTML= '';
-console.log(`empate`);
+    },
+
+    fight() {
+
+        if (partida.teamPlayer1.length == 0 || partida.teamPlayer2.length == 0) { return; }
+
+        this.calculateFight(partida.teamPlayer2, partida.teamPlayer1, 1);
+        if (this.isFinish(partida.teamPlayer1, 2)) {
+            this.nextStage();
+            return;
         }
-        if(partida.teamPlayer1.length == 0){
-            document.getElementById("mssgPlayerWin").innerHTML= 'P2 win';
-console.log(`P2 win`);
-        }
-        if(partida.teamPlayer2.length == 0){
-            document.getElementById("mssgPlayerWin").innerHTML= 'P1 win';
- console.log(`P1 win`);
+        this.calculateFight(partida.teamPlayer1, partida.teamPlayer2, 2);
+        if (this.isFinish(partida.teamPlayer2, 1)) {
+            this.nextStage();
+            return;
         }
     }
-
-    //resultado
 }

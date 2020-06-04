@@ -13,12 +13,18 @@ class fighter{
 
     //funciones
     setHit(ataqueEnemigo){
+        if(this.defensa > ataqueEnemigo){
+            this.vida -=this.suerte;
+            return;
+        }
+
         let hit = ataqueEnemigo - this.defensa;
         this.vida -= hit;
     }
     getAttack(){
         let hit = this.suerte/100;
         hit *=this.ataque;
+        if(this.vida < 15){ hit += 10; }
         return this.ataque + hit;
     }
 
