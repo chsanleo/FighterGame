@@ -9,11 +9,11 @@ let game = {
             partida.teamPlayer1.push(allFighters[fighterChoosedPosition]);
 
             currentTeam = 1;
-            game.changeTextPlayer(currentTeam, 2);
+            this.changeTextPlayer(currentTeam, 2);
 
         } else {
             partida.teamPlayer2.push(allFighters[fighterChoosedPosition]);
-            game.changeTextPlayer(currentTeam, 1);
+            this.changeTextPlayer(currentTeam, 1);
         }
 
         this.disableFighter(fighterID);
@@ -54,7 +54,23 @@ let game = {
     },
 
     nextStage() {
+        if(actualScreen > screens.length){
+            //reset
+        }
 
+        let screenClassNext = document.getElementById(screens[actualScreen + 1]).getAttribute('class');
+        screenClassNext = screenClassNext.replace('screenOff','');
+        document.getElementById(screens[actualScreen + 1]).setAttribute('class', screenClassNext);
+
+        let screenClassActual = document.getElementById(screens[actualScreen]).getAttribute('class');
+        screenClassActual += ' screenOff';
+        document.getElementById(screens[actualScreen]).setAttribute('class', screenClassActual);
+
+        actualScreen++;
+
+        if(actualScreen == 1){ setTimeout(function(){ game.nextStage(); },5000);
+        
+        }
     },
     calculateFight(offensiveTeam, defensiveTeam, defensive) {
 
@@ -72,6 +88,7 @@ let game = {
     isFinish(teamList, team) {
         if (teamList.length == 0) {
             document.getElementById("mssgPlayerWin").innerHTML = `PLAYER ${team} WIN`;
+            this.nextStage();
         }
     },
 
@@ -80,14 +97,9 @@ let game = {
         if (partida.teamPlayer1.length == 0 || partida.teamPlayer2.length == 0) { return; }
 
         this.calculateFight(partida.teamPlayer2, partida.teamPlayer1, 1);
-        if (this.isFinish(partida.teamPlayer1, 2)) {
-            this.nextStage();
-            return;
-        }
+        if (this.isFinish(partida.teamPlayer1, 2)) {return;}
+
         this.calculateFight(partida.teamPlayer1, partida.teamPlayer2, 2);
-        if (this.isFinish(partida.teamPlayer2, 1)) {
-            this.nextStage();
-            return;
-        }
+        if (this.isFinish(partida.teamPlayer2, 1)) { return; }
     }
 }

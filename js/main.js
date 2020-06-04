@@ -3,12 +3,13 @@ const EMPTY = 0;
 
 let allFighters = [];
 let allNameFighters = ['Ihesan','Awip','Olusixa','Lixet','Amixer','Oxot','Jaracas','Tohut','Orem'];
+let screens = ['init-scrn' , 'loading-scrn' , 'choose-scrn', 'fight-scrn','win-scrn'];
+let actualScreen = 0;
 
 let partida = {
 
     teamPlayer1: [],
     teamPlayer2: [],
-
 };
 
 let luchadores = document.getElementById("fighters");
