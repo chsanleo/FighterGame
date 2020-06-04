@@ -12,6 +12,7 @@ let partida = {
 };
 
 let luchadores = document.getElementById("fighters");
+
 let i = 1;
 for(let name of allNameFighters){
   

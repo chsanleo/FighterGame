@@ -57,4 +57,7 @@ let game = {
 
 
     }
+    //lucha 
+
+    //resultado
 }
