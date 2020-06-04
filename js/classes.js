@@ -12,9 +12,14 @@ class fighter{
     }
 
     //funciones
-    attack(ataqueEnemigo){
+    setHit(ataqueEnemigo){
         let hit = ataqueEnemigo - this.defensa;
         this.vida -= hit;
+    }
+    getAttack(){
+        let hit = this.suerte/100;
+        hit *=this.ataque;
+        return this.ataque + hit;
     }
 
     isAlive(){

@@ -68,7 +68,11 @@ body{
     align-self: flex-end;
 }
 .teams>h3{
-    padding: 3em;
+    align-self: flex-start;
+    padding: 2em;
+}
+.life{
+    color:red;
 }
 
 

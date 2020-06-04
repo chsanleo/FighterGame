@@ -56,8 +56,42 @@ let game = {
     nextStage() {
 
 
+    },
+    fight(){
+
+        if(partida.teamPlayer1.length == 0 || partida.teamPlayer2.length == 0){return;}
+
+        partida.teamPlayer1[0].setHit(partida.teamPlayer2[0].getAttack());
+        document.getElementById("lifeP1").innerHTML= partida.teamPlayer1[0].vida;
+console.log(`P1: ${partida.teamPlayer1[0].vida}`);
+        partida.teamPlayer2[0].setHit(partida.teamPlayer1[0].getAttack());
+        document.getElementById("lifeP2").innerHTML= partida.teamPlayer2[0].vida;
+console.log(`P2: ${partida.teamPlayer2[0].vida}`);
+
+
+
+        if(!partida.teamPlayer1[0].isAlive()){  
+console.log(`Eliminamos al primer jugador P1 ${partida.teamPlayer1[0].nombre}`);
+            partida.teamPlayer1.shift();
+        }
+        if(!partida.teamPlayer2[0].isAlive()){
+console.log(`Eliminamos al primer jugador P2 ${partida.teamPlayer2[0].nombre}`);
+            partida.teamPlayer2.shift();
+        }
+        
+        if(partida.teamPlayer1.length == 0 && partida.teamPlayer2.length == 0){
+            document.getElementById("mssgPlayerWin").innerHTML= '';
+console.log(`empate`);
+        }
+        if(partida.teamPlayer1.length == 0){
+            document.getElementById("mssgPlayerWin").innerHTML= 'P2 win';
+console.log(`P2 win`);
+        }
+        if(partida.teamPlayer2.length == 0){
+            document.getElementById("mssgPlayerWin").innerHTML= 'P1 win';
+ console.log(`P1 win`);
+        }
     }
-    //lucha 
 
     //resultado
 }
