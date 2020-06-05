@@ -1,6 +1,0 @@
-
-//Terminar el reset juego                                                              TRY
-//que los sections ocupen el 100% de la pantalla                                       TRY
-//comprobar el TypeError: offensiveTeam[0] is undefined linea 72 (promesa quiza)       TRY
-//nombres del casting de fightClub                                                     DONE
-//musica
