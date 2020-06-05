@@ -26,6 +26,7 @@ class fighter{
         let hit = this.suerte/100;
         hit *=this.ataque;
         if(this.vida < 15){ hit += 10; }
+        if(this.vida < 3){ hit += 15; }
         return this.ataque + hit;
     }
     isAlive(){
