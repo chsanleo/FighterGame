@@ -55,13 +55,16 @@ let game = {
 
     nextStage() {
         if(actualScreen > screens.length){
-            //reset
+            this.reset(); 
+            return;
         }
 
+        //mostrar elemento
         let screenClassNext = document.getElementById(screens[actualScreen + 1]).getAttribute('class');
         screenClassNext = screenClassNext.replace('screenOff','');
         document.getElementById(screens[actualScreen + 1]).setAttribute('class', screenClassNext);
 
+        //ocultar elemento
         let screenClassActual = document.getElementById(screens[actualScreen]).getAttribute('class');
         screenClassActual += ' screenOff';
         document.getElementById(screens[actualScreen]).setAttribute('class', screenClassActual);
@@ -101,5 +104,22 @@ let game = {
 
         this.calculateFight(partida.teamPlayer1, partida.teamPlayer2, 2);
         if (this.isFinish(partida.teamPlayer2, 1)) { return; }
+    },
+
+    reset(){
+        partida.teamPlayer1 = [];
+        partida.teamPlayer2 = [];
+
+        //ocultar elemento
+        let screenClassActual = document.getElementById(screens[actualScreen]).getAttribute('class');
+        screenClassActual += ' screenOff';
+        document.getElementById(screens[actualScreen]).setAttribute('class', screenClassActual);
+
+        actualScreen = 0;
+
+        //mostrar elemento
+        let screenClassNext = document.getElementById(screens[actualScreen]).getAttribute('class');
+        screenClassNext = screenClassNext.replace('screenOff','');
+        document.getElementById(screens[actualScreen]).setAttribute('class', screenClassNext);
     }
 }
