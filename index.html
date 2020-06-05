@@ -11,17 +11,17 @@
 </head>
 
 <body>
-    <section class="screen">
+    <section class="screen" id="init-scrn">
         <div class="introText">
             <img id="headPic" src="img/fightClub.png"/>
             <p class = "textRule">The first rule of Fight Club is: </p>
-            <p class = "rule" onclick=""> You do not talk about Fight Club.</p>
+            <p class = "rule" onclick="game.nextStage()"> You do not talk about Fight Club.</p>
         </div>
     </section>
 
 
 
-    <section class="screen">
+    <section class="screen screenOff" id="loading-scrn">
         <div div class="introText">
             <img src="https://media.giphy.com/media/cIbJ5bBlNLxynVGYzb/giphy.gif">
             <ul>
@@ -38,12 +38,12 @@
     </section>
 
 
-    <section class="screen">
+    <section class="screen screenOff" id="choose-scrn">
         <div class="introText" id="chooseText">Choose ur fighter Player 1</div>
         <div id="fighters" class="luchadores"></div>
     </section>
 
-    <section class="screen">
+    <section class="screen screenOff" id="fight-scrn">
         <div class="teams">
             <h3>Player_1</h3>
             <h3 class="life" id="lifeP1"></h3>
@@ -57,9 +57,10 @@
         </div>
     </section>
 
-    <section class="screen">
+    <section class="screen screenOff" id="win-scrn">
         <div id="final">
-            <h3 id="mssgPlayerWin"></h3>
+            <h1 id="mssgPlayerWin"></h1>
+            <h3 onclick="game.reset()">Return to the Fight Club the next Thursday</h3>
         </div>
     </section>
 

@@ -1,32 +1,14 @@
 const MAXNUMTEAMFIGHTERS = 3;
 const EMPTY = 0;
 
-let allFighters = [];
-let allNameFighters = ['Ihesan','Awip','Olusixa','Lixet','Amixer','Oxot','Jaracas','Tohut','Orem'];
+let allNameFighters = ['Marla Singer','Angel Face','Bob','Dectective Stern','Richard Chesler','Thomas','The Mecanic','The Narrator','Tyler Durden'];
+let screens = ['init-scrn' , 'loading-scrn' , 'choose-scrn', 'fight-scrn','win-scrn'];
+let actualScreen = 0;
 
 let partida = {
 
     teamPlayer1: [],
     teamPlayer2: [],
-
+    allFighters: [],
 };
-
-let luchadores = document.getElementById("fighters");
-
-let i = 1;
-for(let name of allNameFighters){
-  
-  fighterT = new fighter(name,utils.random(20, 30), utils.random(10, 20), utils.random(5, 10));
-
-  let luchador = document.createElement("img");
-
-  luchador.setAttribute('src',`img/human${i}.jpg`);
-  luchador.setAttribute('class','luchador');
-  luchador.setAttribute('title', ` Name:${fighterT.nombre} Attack:${fighterT.ataque} Defense:${fighterT.defensa} Lucky:${fighterT.suerte} Life:${fighterT.vida}`);
-  luchador.setAttribute('id', `fighter${i}`);
-  luchador.setAttribute('onclick',`game.choose(${i})`);
-
-  luchadores.appendChild(luchador)
-  allFighters.push(fighterT);
-  i++;
-};
+game.generateFighters();

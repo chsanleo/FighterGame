@@ -7,6 +7,7 @@ class fighter{
         this.defensa = defensa;
         this.suerte = suerte;
         this.vida = utils.random(100,200);
+        this.vidaIni = this.vida;
 
         if(this.vida < 150){ this.ataque += utils.random(10,30); }
     }
@@ -27,9 +28,11 @@ class fighter{
         if(this.vida < 15){ hit += 10; }
         return this.ataque + hit;
     }
-
     isAlive(){
         if( this.vida < 1){ return false; }
         return true;
+    }
+    reset(){
+        this.vida = this.vidaIni;
     }
 }
