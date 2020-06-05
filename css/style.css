@@ -8,7 +8,6 @@
     width: 100%;
     min-height: 100%;
     height: auto !important;
-    /*     */
     position: fixed;
     top:0;
     left:0;
@@ -117,5 +116,10 @@ body{
 #mssgPlayerWin{
     text-align: center;
     padding-top: 5%;
+    font-size: xx-large;
+}
+#finalMssg{
+    text-align: center;
+    color:red;
     font-size: xx-large;
 }
