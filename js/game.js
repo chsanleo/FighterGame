@@ -43,6 +43,7 @@ let game = {
             let indexLuchador = allNameFighters.indexOf(person.nombre) + 1;
             luchador.setAttribute("src", `img/human${indexLuchador}.jpg`);
             luchador.setAttribute("class", "luchador");
+            luchador.setAttribute('title', ` Name:${person.nombre} Attack:${person.ataque} Defense:${person.defensa}`);
 
             player.appendChild(luchador);
         };
