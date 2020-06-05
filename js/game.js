@@ -30,17 +30,7 @@ let game = {
         classFighter += ' disable';
         fighter.setAttribute('class', classFighter);
     },
-    /*
-    enableFighter(fighterID) {
-        console.log(fighterID);
-        let fighter = document.getElementById(`fighter${fighterID}`);
-        fighter.setAttribute(`onclick`, `game.choose(${fighterID})`);
 
-        let classFighter = fighter.getAttribute('class');
-        classFighter = classFighter.replace('disable', '');
-        fighter.setAttribute('class', classFighter);
-    },
-*/
     updateTeam(team) {
         let player = document.getElementById(`chossedPlayer${team}`);
         player.innerHTML = '';
@@ -68,16 +58,9 @@ let game = {
             this.reset();
             return;
         }
+        this.showScreen(actualScreen + 1);
 
-        //mostrar elemento
-        let screenClassNext = document.getElementById(screens[actualScreen + 1]).getAttribute('class');
-        screenClassNext = screenClassNext.replace('screenOff', '');
-        document.getElementById(screens[actualScreen + 1]).setAttribute('class', screenClassNext);
-
-        //ocultar elemento
-        let screenClassActual = document.getElementById(screens[actualScreen]).getAttribute('class');
-        screenClassActual += ' screenOff';
-        document.getElementById(screens[actualScreen]).setAttribute('class', screenClassActual);
+        this.hiddenScreen(actualScreen);
 
         actualScreen++;
 
@@ -90,7 +73,7 @@ let game = {
         defensiveTeam[0].setHit(offensiveTeam[0].getAttack());
         let life = parseInt(defensiveTeam[0].vida);
         if (life < 1) { life = "STOP!"; }
-        document.getElementById(`lifeP${defensive}`).innerHTML = life + '/'+ defensiveTeam[0].vidaIni;
+        document.getElementById(`lifeP${defensive}`).innerHTML = life + '/' + defensiveTeam[0].vidaIni;
 
         if (!defensiveTeam[0].isAlive()) {
             defensiveTeam.shift();
@@ -101,7 +84,7 @@ let game = {
     isFinish(teamList, team) {
         if (teamList.length == 0) {
             document.getElementById("mssgPlayerWin").innerHTML = `PLAYER ${team} WIN`;
-            setTimeout(function(){game.nextStage(); },1000); 
+            setTimeout(function () { game.nextStage(); }, 1000);
             return true;
         }
         return false;
@@ -119,34 +102,36 @@ let game = {
     },
 
     reset() {
-        partida.teamPlayer1.splice(0,partida.teamPlayer1.length);
-        partida.teamPlayer2.splice(0,partida.teamPlayer2.length);
-        partida.allFighters.splice(0,partida.allFighters.length);
+        partida.teamPlayer1.splice(0, partida.teamPlayer1.length);
+        partida.teamPlayer2.splice(0, partida.teamPlayer2.length);
+        partida.allFighters.splice(0, partida.allFighters.length);
 
         document.getElementById(`lifeP1`).innerHTML = '';
         document.getElementById(`lifeP2`).innerHTML = '';
 
         let luchadores = document.getElementById("fighters");
-        luchadores.innerHTML='';
+        luchadores.innerHTML = '';
         this.generateFighters();
 
-
-        //ocultar elemento
-        let screenClassActual = document.getElementById(screens[actualScreen]).getAttribute('class');
-        screenClassActual += ' screenOff';
-        document.getElementById(screens[actualScreen]).setAttribute('class', screenClassActual);
+        this.hiddenScreen(actualScreen);
 
         actualScreen = 0;
+        this.showScreen(actualScreen);
 
-        //mostrar elemento
+    },
+
+    showScreen(actualScreen) {
         let screenClassNext = document.getElementById(screens[actualScreen]).getAttribute('class');
         screenClassNext = screenClassNext.replace('screenOff', '');
         document.getElementById(screens[actualScreen]).setAttribute('class', screenClassNext);
-        
+    },
+    hiddenScreen(actualScreen) {
+        let screenClassActual = document.getElementById(screens[actualScreen]).getAttribute('class');
+        screenClassActual += ' screenOff';
+        document.getElementById(screens[actualScreen]).setAttribute('class', screenClassActual);
     },
 
     generateFighters() {
-
         let luchadores = document.getElementById("fighters");
 
         let i = 1;
